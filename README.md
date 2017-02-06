@@ -16,8 +16,7 @@ Using ES6, with Babel (http://babeljs.io/)
 2. Globally installed nodemon (https://nodemon.io/)
 
 
-## To run:
-We have to run two instance of node simultaneously. First we will clone the project
+## Steps to run:
 ```
 git clone git@gitlab.com:raghavgarg1257/nodejs-mysql-boilerplate.git
 cd nodejs-mysql-boilerplate
