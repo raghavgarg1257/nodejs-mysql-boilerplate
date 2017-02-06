@@ -1,0 +1,32 @@
+{
+  "name": "Ecom",
+  "version": "1.0.0",
+  "description": "A simple ecommerce website",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js --exec babel-node index.js --presets env",
+    "debug": "DEBUG=knex:bindings nodemon --inspect index.js --exec babel-node index.js --presets env"
+  },
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git://gitlab.com/raghavgarg1257/ecom"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bookshelf": "^0.10.3",
+    "checkit": "^0.7.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.14.0",
+    "knex": "^0.12.6",
+    "mysql": "^2.13.0",
+    "validator": "^6.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-preset-env": "^1.1.5",
+    "morgan": "^1.7.0"
+  }
+}
