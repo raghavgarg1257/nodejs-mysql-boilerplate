@@ -23,6 +23,9 @@ cd nodejs-mysql-boilerplate
 touch .env
 nano .env and add your credentials as in env.example
 npm install
+```
+Now Please import the `db.sql` file into your database
+```
 npm start
 ```
 The app will be started on the mentioned port which will be printed in the console upon starting the server like: `http://localhost:8080`.
