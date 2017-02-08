@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js --exec babel-node index.js --presets env",
-    "debug": "DEBUG=knex:bindings nodemon --inspect index.js --exec babel-node index.js --presets env"
+    "debug": "DEBUG=knex:bindings nodemon --inspect index.js --exec babel-node index.js --presets env",
+    "migrate-up": "DEBUG=knex:tx knex migrate:latest",
+    "migrate-down": "DEBUG=knex:tx knex migrate:rollback"
   },
   "author": "",
   "repository": {
