@@ -55,7 +55,7 @@ class IdParameter {
                 }
                 else {
                     Users.where({'ID': new Buffer(req.params.id, "hex")})
-                    .save(updateObj, { method:"update" })
+                    .save(updateObj, { patch:true }) // why using patch: so to update selective fields
                     .then( model => {
                         res.json({
                             status: 1,
