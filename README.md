@@ -1,7 +1,3 @@
-Being developed!
-
----
-
 # NodeJS MySQL Boilerplate
 
 This app defines a very neat and modular structure to start you next prject.
