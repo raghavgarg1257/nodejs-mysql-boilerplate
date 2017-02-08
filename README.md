@@ -2,7 +2,7 @@ Being developed!
 
 ---
 
-# NodeJS Boilerplate
+# NodeJS MySQL Boilerplate
 
 This app defines a very neat and modular structure to start you next prject.
 
@@ -33,8 +33,9 @@ npm run migrate-up
 
 # To drop the tables
 npm run migrate-down
-
-# Start the server
+```
+Now to start the server
+```
 npm start
 ```
 The app will be started on the mentioned port which will be printed in the console upon starting the server like: `http://localhost:8080`.
