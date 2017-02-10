@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-let knex = _knex({
+const knex = _knex({
     client: "mysql",
     connection: {
         host: "127.0.0.1",
@@ -17,7 +17,7 @@ let knex = _knex({
     debug: true
 });
 
-let Bookshelf = _bookshelf(knex);
+const Bookshelf = _bookshelf(knex);
 
 // to resolve circular dependencies with relations
 Bookshelf.plugin('registry');

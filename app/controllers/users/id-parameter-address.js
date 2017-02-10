@@ -46,7 +46,7 @@ class IdParameterAddress {
         .then( user => {
             if (user) {
 
-                let user_address = new Users_Addresses({
+                const user_address = new Users_Addresses({
                     User_ID: new Buffer(req.params.id, 'hex'),
                     Line_1: req.body.line1,
                     Line_2: req.body.line2,

@@ -11,24 +11,24 @@ module.exports = (router, middlewares) => {
 
     // all the routes related to '/users'
 
-    let base = new Base();
+    const base = new Base();
     router.route('/users')
-        .all(base.all)
+        .all(base.all) // open route
         .get(base.get) // fetch all users
         .post(base.post); // create new user
 
     // always place route with parameter at the end so that above routes become valid
-    let idParameter = new IdParameter();
+    const idParameter = new IdParameter();
     router.route('/users/:id')
-        .all(idParameter.all)
+        .all(middlewares.authenticate) // protected route
         .get(idParameter.get) // fetch single user by id
-        .put(idParameter.put) // update user
-        .delete(idParameter.delete); // delete user
+        .put(idParameter.put) // update user by id
+        .delete(idParameter.delete); // delete user by id
 
-    let address = new IdParameterAddress();
+    const address = new IdParameterAddress();
     router.route('/users/:id/address')
-        .all(address.all)
-        .get(address.get) // fetch all user's address
-        .post(address.post); // create new address for the use
+        .all(middlewares.authenticate) // protected route
+        .get(address.get) // fetch all address of user by id
+        .post(address.post); // create new address for the user by id
 
 };
