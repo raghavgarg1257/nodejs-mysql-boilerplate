@@ -1,5 +1,5 @@
 {
-  "name": "NodeJS MySQL Boilerplate",
+  "name": "nodejs mysql boilerplate",
   "version": "1.0.0",
   "description": "App with a very neat and modular structure to start you next nodejs project.",
   "main": "index.js",
