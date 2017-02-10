@@ -1,6 +1,6 @@
 # NodeJS MySQL Boilerplate
 
-This app defines a very neat and modular structure to start you next prject.
+This app defines a very neat and modular structure to start you next nodejs project.
 
 Using: MySQL, NodeJS, Express, Bookshelf, Knex
 
