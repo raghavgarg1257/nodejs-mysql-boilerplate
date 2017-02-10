@@ -4,12 +4,12 @@
   "description": "A simple ecommerce website",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js --exec babel-node index.js --presets env",
-    "debug": "DEBUG=knex:bindings nodemon --inspect index.js --exec babel-node index.js --presets env",
+    "start": "nodemon --exec babel-node --presets=es2015 index.js",
+    "debug": "DEBUG=knex:bindings nodemon --inspect --exec babel-node --presets=es2015 index.js",
     "migrate-up": "DEBUG=knex:tx knex migrate:latest",
     "migrate-down": "DEBUG=knex:tx knex migrate:rollback"
   },
-  "author": "",
+  "author": "Raghav Garg <raghavgarg1257@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git://gitlab.com/raghavgarg1257/ecom"
@@ -29,6 +29,7 @@
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-preset-env": "^1.1.5",
+    "babel-preset-latest": "^6.22.0",
     "morgan": "^1.7.0"
   }
 }
