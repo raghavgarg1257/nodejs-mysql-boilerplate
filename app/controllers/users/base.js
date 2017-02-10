@@ -43,7 +43,6 @@ class Base {
                 new Buffer(process.env.JWT_SECRET, "base64"),
                 { algorithm: 'HS512', expiresIn: '1d' }
             );
-
             res.json({
                 status: 1,
                 message: "User successfully created",
@@ -52,6 +51,7 @@ class Base {
                     token: token
                 }
             });
+
         })
         .catch( error => {
             // console.log(error); // uncomment to see whole error
