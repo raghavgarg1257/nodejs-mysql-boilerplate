@@ -3,7 +3,7 @@
 import CheckIt from "checkit";
 import Jwt from "jsonwebtoken";
 
-import HTTP from "./../httpcodes";
+import HTTP from "./../../helpers/httpcodes";
 
 // models used
 import Users from "./../../models/users";

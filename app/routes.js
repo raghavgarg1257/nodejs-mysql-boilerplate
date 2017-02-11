@@ -1,6 +1,6 @@
 "use strict";
 
-import Middlewares from "./controllers/middlewares";
+import Middlewares from "./helpers/middlewares";
 import _root from "./controllers/root";
 import _users from "./controllers/users";
 
