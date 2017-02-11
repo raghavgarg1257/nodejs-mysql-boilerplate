@@ -2,8 +2,8 @@
 
 import CheckIt from "checkit";
 
-import HTTP from "./../httpcodes";
-import { isID } from './../../models/validate';
+import HTTP from "./../../helpers/httpcodes";
+import { isID } from './../../helpers/validate';
 
 // models used
 import Users from "./../../models/users";

@@ -4,7 +4,7 @@ import crypto from "crypto";
 import CheckIt from "checkit";
 
 import Bookshelf from "./../db";
-import { sanitize, isName, isID, isExist } from './validate';
+import { sanitize, isName, isID, isExist } from './../helpers/validate';
 
 // related models
 // just importing to register it to the Bookshelf register
