@@ -2,6 +2,7 @@
 
 import CheckIt from "checkit";
 
+import HTTP from "./../httpcodes";
 import { isID } from './../../models/validate';
 
 // models used
@@ -15,24 +16,23 @@ class IdParameterAddress {
     // GET request
     get (req, res) {
 
-        if (!isID(req.params.id)) res.json({ status: 0, message: "Invalid ID" });
+        if (!isID(req.params.id)) res.status(HTTP.BAD_REQUEST).json({ message: "Invalid ID" });
 
         Users.where({"ID": new Buffer(req.params.id, "hex")}).fetch({ withRelated: ['addresses'] })
         .then( user => {
             if (user) {
-                res.json({
-                    status: 1,
+                res.status(HTTP.OK).json({
                     message: "User address found",
                     data: user.toJSON()
                 });
             }
             else {
-                res.json({ status: 0, message: "User couldn't be found" });
+                res.status(HTTP.NOT_FOUND).json({ message: "user couldn't be found" });
             }
         })
         .catch( error => {
-            console.log(error); // uncomment to see whole error
-            res.json({ status: 0, message: "User couldn't be found", data:error.message })
+            // console.log(error); // uncomment to see whole error
+            res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong.", data:error.message });
         });
 
     }
@@ -40,7 +40,7 @@ class IdParameterAddress {
     // POST request
     post (req, res) {
 
-        if (!isID(req.params.id)) res.json({ status: 0, message: "Invalid ID" });
+        if (!isID(req.params.id)) res.status(HTTP.BAD_REQUEST).json({ message: "Invalid ID" });
 
         Users.where({"ID": new Buffer(req.params.id, "hex")}).fetch()
         .then( user => {
@@ -57,34 +57,33 @@ class IdParameterAddress {
 
                 user_address.save()
                 .then( model => {
-                    console.log("model after save:", model.attributes);
-                    res.json({
-                        status: 1,
+                    res.status(HTTP.OK).json({
                         message: "User's Address successfully created",
                         data: model.StringID
                     });
                 })
                 .catch( error => {
-                    console.log(error); // uncomment to see whole error
+                    // console.log(error); // uncomment to see whole error
                     if (error instanceof CheckIt.Error) {
-                        res.json({ status: 0, message: "User's Address couldn't be created", data:error.toJSON() });
+                        res.status(HTTP.BAD_REQUEST).json({ message: "Not valid data, user couldn't be updated", data:error.toJSON() });
                     }
                     else {
-                        res.json({ status: 0, message: "User's Address couldn't be created", data:error.message });
+                        res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong.", data:error.message });
                     }
                 });
 
             }
             else {
-                res.json({ status: 0, message: "User couldn't be found" });
+                res.status(HTTP.NOT_FOUND).json({ message: "user couldn't be found" });
             }
         })
         .catch( error => {
             // console.log(error); // uncomment to see whole error
-            res.json({ status: 0, message: "User couldn't be found", data:error.message })
+            res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong.", data:error.message });
         });
 
     }
+
 
 }
 

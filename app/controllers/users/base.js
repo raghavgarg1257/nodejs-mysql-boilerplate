@@ -3,6 +3,8 @@
 import CheckIt from "checkit";
 import Jwt from "jsonwebtoken";
 
+import HTTP from "./../httpcodes";
+
 // models used
 import Users from "./../../models/users";
 
@@ -14,15 +16,19 @@ class Base {
     get (req, res) {
         Users.fetchAll()
         .then( all_users => {
-            res.json({
-                status: 1,
-                message: "Users found",
-                data: all_users.toJSON()
-            });
+            if (all_users.length) {
+                res.status(HTTP.OK).json({
+                    message: "Users found",
+                    data: all_users.toJSON()
+                });
+            }
+            else {
+                res.status(HTTP.NOT_FOUND).json({ message: "No User found", data:error.message })
+            }
         })
         .catch( error => {
             // console.log(error); // uncomment to see whole error
-            res.json({ status: 0, message: "User couldn't be found", data:error.message })
+            res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong.", data:error.message })
         });
     }
 
@@ -43,8 +49,7 @@ class Base {
                 new Buffer(process.env.JWT_SECRET, "base64"),
                 { algorithm: 'HS512', expiresIn: '1d' }
             );
-            res.json({
-                status: 1,
+            res.status(HTTP.OK).json({
                 message: "User successfully created",
                 data: {
                     id: model.StringID,
@@ -56,14 +61,15 @@ class Base {
         .catch( error => {
             // console.log(error); // uncomment to see whole error
             if (error instanceof CheckIt.Error) {
-                res.json({ status: 0, message: "User couldn't be created", data:error.toJSON() });
+                res.status(HTTP.BAD_REQUEST).json({ message: "Not valid data, user couldn't be created", data:error.toJSON() });
             }
             else {
-                res.json({ status: 0, message: "User couldn't be created", data:error.message });
+                res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong", data:error.message });
             }
         });
 
     }
+
 
 }
 
