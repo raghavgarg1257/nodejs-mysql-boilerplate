@@ -49,6 +49,7 @@ class Base {
                 new Buffer(process.env.JWT_SECRET, "base64"),
                 { algorithm: 'HS512', expiresIn: '1d' }
             );
+
             res.status(HTTP.OK).json({
                 message: "User successfully created",
                 data: {
