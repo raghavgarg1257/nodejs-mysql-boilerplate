@@ -2,7 +2,7 @@
 
 This app defines a very neat and modular structure to start you next nodejs project.
 
-Using: MySQL, NodeJS, Express, Bookshelf, Knex
+Using: MySQL, NodeJS, Express, Bookshelf, Knex, Json Web Token(JWT)
 
 Using ES6, with Babel (http://babeljs.io/)
 
