@@ -17,7 +17,7 @@ Using ES6, with Babel (http://babeljs.io/)
 git clone git@gitlab.com:raghavgarg1257/nodejs-mysql-boilerplate.git
 cd nodejs-mysql-boilerplate
 touch .env
-nano .env and add your credentials as in env.example (mandatory for db connection)
+nano .env #add your credentials as in env.example (mandatory for db connection)
 npm install
 ```
 Now to migrate Database
