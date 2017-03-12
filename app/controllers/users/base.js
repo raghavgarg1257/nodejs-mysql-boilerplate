@@ -4,6 +4,7 @@ import CheckIt from "checkit";
 import Jwt from "jsonwebtoken";
 
 import HTTP from "./../../helpers/httpcodes";
+import { ModelError, ISE } from "./../../helpers/error-handler.js";
 
 // models used
 import Users from "./../../models/users";
@@ -26,10 +27,7 @@ class Base {
                 res.status(HTTP.NOT_FOUND).json({ message: "No User found", data:error.message })
             }
         })
-        .catch( error => {
-            // console.log(error); // uncomment to see whole error
-            res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong.", data:error.message })
-        });
+        .catch((error) => { ISE(error, res) });
     }
 
     // POST request
@@ -59,15 +57,7 @@ class Base {
             });
 
         })
-        .catch( error => {
-            // console.log(error); // uncomment to see whole error
-            if (error instanceof CheckIt.Error) {
-                res.status(HTTP.BAD_REQUEST).json({ message: "Not valid data, user couldn't be created", data:error.toJSON() });
-            }
-            else {
-                res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong", data:error.message });
-            }
-        });
+        .catch((error) => { ModelError(error, res) });
 
     }
 

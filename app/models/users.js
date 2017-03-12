@@ -25,6 +25,7 @@ class Users extends Bookshelf.Model {
 
             // preparing the data
             let validateObj = {}, validateRule = {};
+
             Object.keys(this.attributes).map( key => {
                 // sanitizing the input
                 this.attributes[key] = (key.includes("ID")) ? this.attributes[key] : sanitize(this.attributes[key]);

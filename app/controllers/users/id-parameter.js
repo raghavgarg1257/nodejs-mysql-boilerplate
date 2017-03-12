@@ -4,6 +4,7 @@ import CheckIt from "checkit";
 
 import HTTP from "./../../helpers/httpcodes";
 import { isID } from './../../helpers/validate';
+import { ModelError, ISE } from "./../../helpers/error-handler.js";
 
 // models used
 import Users from "./../../models/users";
@@ -29,10 +30,7 @@ class IdParameter {
                 res.status(HTTP.NOT_FOUND).json({ message: "user couldn't be found" });
             }
         })
-        .catch( error => {
-            // console.log(error); // uncomment to see whole error
-            res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong.", data:error.message })
-        });
+        .catch((error) => { ISE(error, res) });
 
     }
 
@@ -62,15 +60,7 @@ class IdParameter {
                             data: req.params.id
                         });
                     })
-                    .catch( error => {
-                        // console.log(error); // uncomment to see whole error
-                        if (error instanceof CheckIt.Error) {
-                            res.status(HTTP.BAD_REQUEST).json({ message: "Not valid data, user couldn't be updated", data:error.toJSON() });
-                        }
-                        else {
-                            res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong.", data:error.message });
-                        }
-                    });
+                    .catch((error) => { ModelError(error, res) });
                 }
 
             }
@@ -78,10 +68,7 @@ class IdParameter {
                 res.status(HTTP.NOT_FOUND).json({ message: "user couldn't be found" });
             }
         })
-        .catch( error => {
-            // console.log(error); // uncomment to see whole error
-            res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong.", data:error.message });
-        });
+        .catch((error) => { ISE(error, res) });
 
     }
 
@@ -102,21 +89,14 @@ class IdParameter {
                         message: "User successfully removed",
                     });
                 })
-                .catch( error => {
-                    // console.log(error); // uncomment to see whole error
-                    res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong.", data:error.message });
-                });
+                .catch((error) => { ISE(error, res) });
 
             }
             else {
                 res.status(HTTP.NOT_FOUND).json({ message: "user couldn't be found" });
             }
         })
-        .catch( error => {
-            // console.log(error); // uncomment to see whole error
-            res.status(HTTP.INTERNAL_SERVER_ERROR).json({ message: "Something wrong.", data:error.message });
-        });
-
+        .catch((error) => { ISE(error, res) });
     }
 
 
