@@ -2,12 +2,12 @@
 
 import CheckIt from "checkit";
 
-import HTTP from "./../../helpers/httpcodes";
-import { isID } from './../../helpers/validate';
-import { ModelError, ISE } from "./../../helpers/error-handler.js";
+import HTTP from "../../helpers/httpcodes";
+import { isID } from '../../helpers/validate';
+import { ModelError, ISE } from "../../helpers/error-handler";
 
 // models used
-import Users from "./../../models/users";
+import Users from "../../models/users";
 
 class IdParameter {
 

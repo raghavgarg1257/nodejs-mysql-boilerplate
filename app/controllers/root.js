@@ -1,6 +1,6 @@
 "use strict";
 
-import HTTP from "./../helpers/httpcodes";
+import HTTP from "../helpers/httpcodes";
 
 module.exports = (router, middlewares) => {
 
