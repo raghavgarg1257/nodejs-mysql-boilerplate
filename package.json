@@ -7,7 +7,9 @@
     "start": "nodemon --exec babel-node --presets=es2015 index.js",
     "debug": "DEBUG=knex:bindings nodemon --inspect --exec babel-node --presets=es2015 index.js",
     "migrate-up": "DEBUG=knex:tx knex migrate:latest",
-    "migrate-down": "DEBUG=knex:tx knex migrate:rollback"
+    "migrate-down": "DEBUG=knex:tx knex migrate:rollback",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Raghav Garg <raghavgarg1257@gmail.com>",
   "repository": {
@@ -24,7 +26,8 @@
     "jsonwebtoken": "^8.0.0",
     "knex": "^0.12.6",
     "mysql": "^2.13.0",
-    "validator": "^6.2.1"
+    "validator": "^6.2.1",
+    "snyk": "^1.192.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -32,5 +35,6 @@
     "babel-preset-env": "^1.1.5",
     "babel-preset-latest": "^6.22.0",
     "morgan": "^1.7.0"
-  }
+  },
+  "snyk": true
 }
